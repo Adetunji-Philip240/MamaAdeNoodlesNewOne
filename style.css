@@ -1,0 +1,91 @@
+body {
+  background-image: url("/images/backgrnd.webp");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+#top {
+  background-image: linear-gradient(
+    to bottom right,
+    #e3b1f680,
+    #ff4f8b80,
+    #f8e35680
+  );
+  border-radius: 0 0 50px 50px;
+  margin-bottom: -16px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.logo {
+  width: 40%;
+}
+
+/* #slide-show {
+  border: 1px dotted #d9534f;
+} */
+a {
+  text-decoration: none;
+}
+
+/*for desktop*/
+@media only screen and (min-width: 992px) {
+  .logo {
+    width: 20%;
+  }
+  .service {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .about-us {
+    margin-left: 15%;
+  }
+  .footer {
+    margin-left: 15%;
+  }
+}
+
+.loader {
+  display: inline-grid;
+  padding: 5px;
+  background: #fff;
+  filter: blur(4px) contrast(12);
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin-left: -70px;
+  margin-top: -20px;
+}
+.loader:before,
+.loader:after {
+  content: "";
+
+  grid-area: 1/1;
+  height: 40px;
+  aspect-ratio: 3;
+  --c: #0000 64%, #000 66% 98%, #0000 101%;
+  background: radial-gradient(35% 146% at 50% 159%, var(--c)) 0 0,
+    radial-gradient(35% 146% at 50% -59%, var(--c)) 100% 100%;
+  background-size: calc(200% / 3) 50%;
+  background-repeat: repeat-x;
+  clip-path: inset(0 100% 0 0);
+  animation: l15 1.5s infinite linear;
+}
+
+.loader:after {
+  scale: -1 1;
+}
+@keyframes l15 {
+  50% {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+.hidden {
+  display: none;
+}

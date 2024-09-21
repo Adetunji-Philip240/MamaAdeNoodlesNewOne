@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimie Noodles</title>
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!--Bootstrap icon-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <!--W3.CSS-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <!--W3.CSS Icon-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!--External CSS-->
+    <link rel="stylesheet" href="/style.css" />
+
+    <!--Internal CSS-->
+
+    <style>
+      div.gallery {
+        border: 1px solid #e3b1f6;
+        transition: transform 0.3s ease;
+      }
+
+      div.gallery:hover {
+        border: 1px solid #ff4f8b;
+        transform: scale(1.1);
+      }
+
+      div.gallery img {
+        width: 100%;
+        height: auto;
+      }
+
+      div.desc {
+        padding: 15px;
+        text-align: center;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 24.99999%;
+      }
+
+      @media only screen and (max-width: 700px) {
+        .responsive {
+          width: 49.99999%;
+          margin: 6px 0;
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        .responsive {
+          width: 100%;
+        }
+      }
+
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      @media only screen and (min-width: 992px) {
+        .imagegallery {
+          margin-left: 30%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader" class="loader"></div>
+    <div id="content" class="hidden">
+      <div
+        class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"
+        style="width: 200px"
+        id="mySidebar"
+      >
+        <button
+          class="w3-bar-item w3-button w3-large w3-hide-large"
+          onclick="w3_close()"
+        >
+          Close &times;
+        </button>
+        <a href="/index.html#section-services" class="w3-bar-item w3-button"
+          >Services</a
+        >
+        <a href="/index.html#section-aboutus" class="w3-bar-item w3-button"
+          >About us</a
+        >
+        <a href="/index.html#section-ordernow" class="w3-bar-item w3-button"
+          >Order Now</a
+        >
+        <div class="w3-dropdown-hover">
+          <button class="w3-button">
+            Other Products
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="w3-dropdown-content w3-bar-block">
+            <a href="/products/indomie.html" class="w3-bar-item w3-button"
+              >Indomie</a
+            >
+            <a href="/products/chikkichicken.html" class="w3-bar-item w3-button"
+              >Chikki Chicken</a
+            >
+          </div>
+        </div>
+        <a href="/index.html#section-contact" class="w3-bar-item w3-button"
+          >Contact</a
+        >
+        <a href="#" class="w3-bar-item w3-button">Our Gallery</a>
+        <a href="/index.html" class="w3-bar-item w3-button"
+          ><i class="material-icons">home</i></a
+        >
+      </div>
+
+      <div class="w3-main" style="margin-left: 200px">
+        <div id="top" style="color: white">
+          <button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">
+            &#9776;
+          </button>
+          <div class="w3-container">
+            <img
+              src="/images/logo.png"
+              class="mx-auto d-block logo"
+              alt="logo"
+            />
+          </div>
+        </div>
+        <div id="slide-show" class="w3-content w3-section">
+          <p style="text-align: center" id="greetings"></p>
+          <p>
+            These are the Minimie Noodles available for you to satisfy your
+            hunger
+          </p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Minimie Instant Noodles (Slurpy Chicken)
+            </li>
+            <li class="list-group-item">
+              Mimee Instant Noodles (Chicken Flavour)
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="imagegallery">
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="/products/minimiepics/minimie1.png">
+              <img
+                src="/products/minimiepics/minimie1.png"
+                alt="indomie"
+                width="600"
+                height="400"
+              />
+            </a>
+            <div class="desc">Mama Ade Indomie😋</div>
+          </div>
+        </div>
+
+        <div class="responsive">
+          <div class="gallery">
+            <a target="_blank" href="/products/minimiepics/minimie2.png">
+              <img
+                src="/products/minimiepics/minimie2.png"
+                alt="indomie"
+                width="600"
+                height="400"
+              />
+            </a>
+            <div class="desc">Mama Ade Indomie😋</div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <script src="/general.js"></script>
+  </body>
+</html>
