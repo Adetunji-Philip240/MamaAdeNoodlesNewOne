@@ -1,9 +1,12 @@
+/*designing the body*/
 body {
   background-image: url("/images/backgrnd.webp");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
 }
+
+/*designing the nav containing the logo*/
 #top {
   background-image: linear-gradient(
     to bottom right,
@@ -15,36 +18,41 @@ body {
   margin-bottom: -16px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+/*Resizing the logo image*/
 .logo {
   width: 40%;
 }
 
-/* #slide-show {
-  border: 1px dotted #d9534f;
-} */
+/*styling the links*/
 a {
   text-decoration: none;
 }
 
+/*Media Query*/
 /*for desktop*/
 @media only screen and (min-width: 992px) {
+  /*Resizing the logo image*/
   .logo {
     width: 20%;
   }
+  /*Adjusting service section to fit desktop*/
   .service {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
     display: block;
   }
+  /*Adjusting about us section to fit desktop*/
   .about-us {
     margin-left: 15%;
   }
+  /*Adjusting footer section to fit desktop*/
   .footer {
     margin-left: 15%;
   }
 }
 
+/*Designing the Loader*/
 .loader {
   display: inline-grid;
   padding: 5px;

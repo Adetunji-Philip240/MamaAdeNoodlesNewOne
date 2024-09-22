@@ -1,5 +1,4 @@
 //Loader
-
 document.addEventListener("DOMContentLoaded", () => {
   // Simulate an API request or any async operation
   setTimeout(() => {
@@ -17,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     content.style.display = "block";
   }
 });
+//#Loader
 
 //sidebar
 function w3_open() {
@@ -26,6 +26,7 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+//#sidebar
 
 // greeting visitors
 var myDate = new Date();
@@ -44,9 +45,9 @@ else if (hrs >= 17 && hrs <= 24)
     "Good Evening! Hope your day was not hectic. Try our Noodles for Dinner 😀. ";
 
 document.getElementById("greetings").innerHTML = "<b>" + greet + "</b>";
+// #greeting visitors
 
 //slideshow
-
 var myIndex = 0;
 carousel();
 
@@ -63,9 +64,9 @@ function carousel() {
   x[myIndex - 1].style.display = "block";
   setTimeout(carousel, 9000);
 }
+//#slideshow
 
 //services, products, order
-
 function openSection(evt, sectionTitle) {
   var i, x, tablinks;
   x = document.getElementsByClassName("section");
@@ -79,9 +80,7 @@ function openSection(evt, sectionTitle) {
   document.getElementById(sectionTitle).style.display = "block";
   evt.currentTarget.firstElementChild.className += " w3-border-red";
 }
-
-
-
+//#services, products, order
 
 // phone number
 document.getElementById("order").addEventListener("submit", function (event) {
@@ -102,6 +101,7 @@ document.getElementById("order").addEventListener("submit", function (event) {
     errorMessage.style.color = "red";
   }
 });
+// #phone number
 
 // not allowing negative number for egg
 const egg_number = document.getElementById("egg_number");
@@ -116,6 +116,7 @@ egg_number.addEventListener("input", function () {
     egg_errorMessage.style.display = "none"; // Hide error message
   }
 });
+// #not allowing negative number for egg
 
 // not allowing negative number for fish
 const fish_number = document.getElementById("fish_number");
@@ -130,6 +131,7 @@ fish_number.addEventListener("input", function () {
     fish_errorMessage.style.display = "none"; // Hide error message
   }
 });
+// #not allowing negative number for fish
 
 // not allowing negative number in the extra input
 const extraInput = document.getElementById("extra");
@@ -148,8 +150,9 @@ extraInput.addEventListener("input", function () {
     extra_errorMessage.style.display = "none"; // Hide error message
   }
 });
+// #not allowing negative number in the extra input
 
-// not allowing negative number in the extra input
+// not allowing negative number in the location input
 const locationInput = document.getElementById("location");
 const location_errorMessage = document.getElementById("location_errorMessage");
 
@@ -166,7 +169,4 @@ locationInput.addEventListener("input", function () {
     location_errorMessage.style.display = "none"; // Hide error message
   }
 });
-
-
-
-
+// #not allowing negative number in the location input

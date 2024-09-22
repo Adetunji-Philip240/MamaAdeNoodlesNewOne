@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="style.css" />
 
     <!--Internal CSS-->
-
     <style>
       div.gallery {
         border: 1px solid #e3b1f6;
@@ -102,7 +101,9 @@
   </head>
   <body>
     <div id="loader" class="loader"></div>
+    <!--The whole body content-->
     <div id="content" class="hidden">
+      <!--For the Navbar-->
       <div
         class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"
         style="width: 200px"
@@ -125,7 +126,7 @@
         >
         <div class="w3-dropdown-hover">
           <button class="w3-button">
-            Other Products
+            Products
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="w3-dropdown-content w3-bar-block">
@@ -135,18 +136,23 @@
             <a href="/products/minimie.html" class="w3-bar-item w3-button"
               >Minimie</a
             >
+            <a href="/products/chikkichicken.html" class="w3-bar-item w3-button"
+              >Chikki Chicken</a
+            >
           </div>
         </div>
         <a href="index.html#section-contact" class="w3-bar-item w3-button"
           >Contact</a
         >
-        <a href="#" class="w3-bar-item w3-button">Our Gallery</a>
+        <a href="/gallery.html" class="w3-bar-item w3-button">Our Gallery</a>
         <a href="index.html" class="w3-bar-item w3-button"
           ><i class="material-icons">home</i></a
         >
       </div>
 
+      <!--From the logo section to the input field-->
       <div class="w3-main" style="margin-left: 200px">
+        <!--Nav containing the logo-->
         <div id="top" style="color: white">
           <button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()">
             &#9776;
@@ -159,11 +165,38 @@
             />
           </div>
         </div>
+        <!--Greeting and order section-->
         <div id="slide-show" class="w3-content w3-section">
           <p style="text-align: center" id="greetings"></p>
           <p>Order from our Menu and we will get it done.</p>
         </div>
+        <!-- Phone number Input Field -->
+        <div>
+          <input
+            type="tel"
+            id="customerPhoneInput"
+            class="form-control"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <!-- Email Input Field -->
+        <div>
+          <input
+            type="email"
+            id="customerEmailInput"
+            class="form-control"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <p>
+          Please enter your phone number email address for identification
+          purposes before proceeding with any payment
+        </p>
       </div>
+
+      <!--Image Gallery-->
       <div class="imagegallery">
         <div class="responsive">
           <div class="gallery">
@@ -177,10 +210,11 @@
             </a>
             <div class="desc">
               <span style="font-weight: bold; font-style: italic"
-                >IndomieTables</span
+                >Super Pack</span
               >
               <br /><span style="font-weight: bold">Quantity:</span> 2 <br />2
-              eggs <br /><span style="font-weight: bold">Price:</span> <br />
+              eggs <br /><span style="font-weight: bold">Price:</span> 1,800
+              <br />
 
               <button id="payButton" class="btn btn-outline-danger">
                 Order Now!
@@ -201,14 +235,15 @@
             </a>
             <div class="desc">
               <span style="font-weight: bold; font-style: italic"
-                >IndomieTables</span
+                >Chikki Chicken</span
               >
               <br /><span style="font-weight: bold">Quantity:</span> 3
-              <br /><span style="font-weight: bold">Price:</span> <br />
+              <br /><span style="font-weight: bold">Price:</span> 1,500 <br />
               <br />
-              <a href="#" target="_blank">
-                <button class="btn btn-outline-danger">Order Now!</button></a
-              >
+
+              <button id="payButton2" class="btn btn-outline-danger">
+                Order Now!
+              </button>
             </div>
           </div>
         </div>
@@ -226,11 +261,12 @@
             <div class="desc">
               <span style="font-weight: bold; font-style: italic">Minimie</span>
               <br /><span style="font-weight: bold">Quantity:</span> 3
-              <br /><span style="font-weight: bold">Price:</span> <br />
+              <br /><span style="font-weight: bold">Price:</span> 1,200 <br />
               <br />
-              <a href="#" target="_blank">
-                <button class="btn btn-outline-danger">Order Now!</button></a
-              >
+
+              <button id="payButton3" class="btn btn-outline-danger">
+                Order Now!
+              </button>
             </div>
           </div>
         </div>
@@ -240,20 +276,142 @@
     </div>
     <script src="general.js"></script>
 
+    <!--Paystack Configuration-->
+
     <script src="https://js.paystack.co/v1/inline.js"></script>
 
+    <!--Payment for the 1st item-->
     <script>
-      const payButton = document.getElementById("payButton");
-
+      //payment handling
       payButton.addEventListener("click", function () {
+        const customerPhone = document
+          .getElementById("customerPhoneInput")
+          .value.trim();
+        const customerEmail = document
+          .getElementById("customerEmailInput")
+          .value.trim();
+
+        // Validate phone number input using regex
+        const phoneRegex = /^(0[789]\d{9}|\+234[789]\d{9})$/;
+
+        if (!customerPhone) {
+          alert("Please enter your phone number.");
+          return; // Stop the payment process
+        } else if (!phoneRegex.test(customerPhone)) {
+          alert(
+            "Please enter a valid Nigerian phone number (e.g., 08012345678 or +2348012345678)."
+          );
+          return; // Stop the payment process
+        }
+
         const handler = PaystackPop.setup({
           key: "pk_live_27c297994079f65172e88027b037e815470458ee",
-          email: "adewalephilip240@gmail.com", // Customer's email
-          amount: 10000, // Amount in kobo (10000 kobo = 100 NGN)
-          currency: "NGN", // Currency (e.g., NGN, USD)
+          email: customerEmail, // Use the inputted email
+          phone: customerPhone, // Use the inputted phone number
+          amount: 180000, // This represents 1,800 Naira
+          currency: "NGN",
+          metadata: {
+            phone: customerPhone, // Include the phone number in metadata
+          },
           callback: function (response) {
-            // This function is called after the payment is completed
-            alert("Payment successful! Reference: " + response.reference);
+            // Handle successful payment here
+            alert(
+              "Payment successful! Transaction Reference: " + response.reference
+            );
+          },
+          onClose: function () {
+            alert("Transaction was not completed, window closed.");
+          },
+        });
+        handler.openIframe(); // Open the payment modal
+      });
+    </script>
+
+    <!--Payment for the 2nd item-->
+    <script>
+      //payment handling
+      payButton2.addEventListener("click", function () {
+        const customerPhone = document
+          .getElementById("customerPhoneInput")
+          .value.trim();
+        const customerEmail = document
+          .getElementById("customerEmailInput")
+          .value.trim();
+
+        // Validate phone number input using regex
+        const phoneRegex = /^(0[789]\d{9}|\+234[789]\d{9})$/;
+
+        if (!customerPhone) {
+          alert("Please enter your phone number.");
+          return; // Stop the payment process
+        } else if (!phoneRegex.test(customerPhone)) {
+          alert(
+            "Please enter a valid Nigerian phone number (e.g., 08012345678 or +2348012345678)."
+          );
+          return; // Stop the payment process
+        }
+
+        const handler = PaystackPop.setup({
+          key: "pk_live_27c297994079f65172e88027b037e815470458ee",
+          email: customerEmail, // Use the inputted email
+          phone: customerPhone, // Use the inputted phone number
+          amount: 150000, // This represents 1,500 Naira
+          currency: "NGN",
+          metadata: {
+            phone: customerPhone, // Include the phone number in metadata
+          },
+          callback: function (response) {
+            // Handle successful payment here
+            alert(
+              "Payment successful! Transaction Reference: " + response.reference
+            );
+          },
+          onClose: function () {
+            alert("Transaction was not completed, window closed.");
+          },
+        });
+        handler.openIframe(); // Open the payment modal
+      });
+    </script>
+
+    <!--Payment for the 3rd item-->
+    <script>
+      //payment handling and pdf generation
+      payButton3.addEventListener("click", function () {
+        const customerPhone = document
+          .getElementById("customerPhoneInput")
+          .value.trim();
+        const customerEmail = document
+          .getElementById("customerEmailInput")
+          .value.trim();
+
+        // Validate phone number input using regex
+        const phoneRegex = /^(0[789]\d{9}|\+234[789]\d{9})$/;
+
+        if (!customerPhone) {
+          alert("Please enter your phone number.");
+          return; // Stop the payment process
+        } else if (!phoneRegex.test(customerPhone)) {
+          alert(
+            "Please enter a valid Nigerian phone number (e.g., 08012345678 or +2348012345678)."
+          );
+          return; // Stop the payment process
+        }
+
+        const handler = PaystackPop.setup({
+          key: "pk_live_27c297994079f65172e88027b037e815470458ee",
+          email: customerEmail, // Use the inputted email
+          phone: customerPhone, // Use the inputted phone number
+          amount: 120000, // This represents 1,200 Naira
+          currency: "NGN",
+          metadata: {
+            phone: customerPhone, // Include the phone number in metadata
+          },
+          callback: function (response) {
+            // Handle successful payment here
+            alert(
+              "Payment successful! Transaction Reference: " + response.reference
+            );
           },
           onClose: function () {
             alert("Transaction was not completed, window closed.");
